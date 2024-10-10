@@ -98,5 +98,126 @@
        "title":"Fish Food",
        "body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis fringilla sem efficitur congue. Vestibulum efficitur blandit ultricies. Sed tempus mollis orci id facilisis. Aliquam placerat, ipsum eget egestas malesuada, neque nunc scelerisque felis, ut egestas turpis augue ut nisi. Curabitur vel convallis augue.",
        "published":true
-    }
- ] 
+    },
+    
+  {
+    "id": 11,
+    "category": 1,
+    "postDate": "2023-05-22",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 14.99,
+    "title": "Plant Pots",
+    "body": "High-quality ceramic plant pots, ideal for indoor and outdoor plants.",
+    "published": true
+  },
+  {
+    "id": 12,
+    "category": 1,
+    "postDate": "2023-05-23",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 25.99,
+    "title": "Garden Hose",
+    "body": "Durable garden hose with adjustable nozzle for all watering needs.",
+    "published": true
+  },
+  {
+    "id": 13,
+    "category": 1,
+    "postDate": "2023-05-24",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 299.99,
+    "title": "Patio Set",
+    "body": "Stylish patio furniture set including table, chairs, and cushions.",
+    "published": true
+  },
+  {
+    "id": 14,
+    "category": 2,
+    "postDate": "2023-05-25",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 799.99,
+    "title": "Laptop",
+    "body": "High-performance laptop suitable for gaming, work, and entertainment.",
+    "published": true
+  },
+  {
+    "id": 15,
+    "category": 2,
+    "postDate": "2023-05-26",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 59.99,
+    "title": "Wireless Headphones",
+    "body": "Noise-cancelling wireless headphones with a comfortable over-ear design.",
+    "published": true
+  },
+  {
+    "id": 16,
+    "category": 2,
+    "postDate": "2023-05-27",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 39.99,
+    "title": "Gaming Mouse",
+    "body": "Ergonomic gaming mouse with customizable buttons and RGB lighting.",
+    "published": true
+  },
+  {
+    "id": 17,
+    "category": 3,
+    "postDate": "2023-05-28",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 19.99,
+    "title": "Sunglasses",
+    "body": "Polarized sunglasses providing full UV protection.",
+    "published": true
+  },
+  {
+    "id": 18,
+    "category": 3,
+    "postDate": "2023-05-29",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 49.99,
+    "title": "Jeans",
+    "body": "Comfortable and stylish jeans available in various sizes.",
+    "published": true
+  },
+  {
+    "id": 19,
+    "category": 3,
+    "postDate": "2023-05-30",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 89.99,
+    "title": "Sneakers",
+    "body": "Lightweight sneakers suitable for both casual and athletic wear.",
+    "published": true
+  },
+  {
+    "id": 20,
+    "category": 4,
+    "postDate": "2023-05-31",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 89.99,
+    "title": "Camping Tent",
+    "body": "Spacious and waterproof camping tent for up to four people.",
+    "published": true
+  },
+  {
+    "id": 21,
+    "category": 4,
+    "postDate": "2023-06-01",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 299.99,
+    "title": "Mountain Bike",
+    "body": "Durable mountain bike with 21-speed gears and front suspension.",
+    "published": true
+  },
+  {
+    "id": 22,
+    "category": 4,
+    "postDate": "2023-06-02",
+    "featureImage": "https://dummyimage.com/200x200/000/fff",
+    "price": 29.99,
+    "title": "Yoga Mat",
+    "body": "Eco-friendly and non-slip yoga mat perfect for all levels of practice.",
+    "published": true
+  }
+]
