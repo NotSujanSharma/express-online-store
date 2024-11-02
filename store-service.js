@@ -41,6 +41,54 @@ function getAllItems() {
     });
 }
 
+function addItem(itemData) {
+    return new Promise((resolve, reject) => {
+        if (!itemData) {
+            reject("Item data is required");
+        } else {
+            itemData.published = itemData.published ? true : false;
+            itemData.id = items.length + 1;
+            items.push(itemData);
+            resolve(itemData);
+        }
+    });
+}
+
+function getItemsByCategory(category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item => item.category === parseInt(category));
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
+        }
+    });
+}
+
+function getItemsByMinDate(minDateStr) {
+    return new Promise((resolve, reject) => {
+        const minDate = new Date(minDateStr);
+        const filteredItems = items.filter(item => new Date(item.postDate) >= minDate);
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
+        }
+    });
+}
+
+
+function getItemById(id) {
+    return new Promise((resolve, reject) => {
+        const item = items.find(item => item.id === parseInt(id));
+        if (item) {
+            resolve(item);
+        } else {
+            reject("no result returned");
+        }
+    });
+}
+
 // Get published items
 function getPublishedItems() {
     return new Promise((resolve, reject) => {
@@ -66,5 +114,9 @@ module.exports = {
     initialize,
     getAllItems,
     getPublishedItems,
-    getCategories
+    getCategories,
+    getItemsByCategory,
+    getItemsByMinDate,
+    getItemById,
+    addItem
 };
