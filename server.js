@@ -36,7 +36,11 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.redirect('/about');
 });
-
+app.get('/shop', (req, res) => {
+    store_service.getPublishedItems()
+        .then(items => res.json(items))
+        .catch(err => res.status(500).json({ message: err }));
+});
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/about.html'));
 })
