@@ -76,7 +76,6 @@ app.get("/shop", async (req, res) => {
 
         // get the latest item from the front of the list (element 0)
         let item = items[0];
-
         // store the "items" and "item" data in the viewData object (to be passed to the view)
         viewData.items = items;
         viewData.item = item;
@@ -99,40 +98,53 @@ app.get("/shop", async (req, res) => {
 });
 
 app.get('/shop/:id', async (req, res) => {
-    let viewData = {
-        post: null,
-        posts: null,
-        categories: null
-    };
+
+    // Declare an object to store properties for the view
+    let viewData = {};
 
     try {
-        let items;
 
+        // declare empty array to hold "item" objects
+        let items = [];
+
+        // if there's a "category" query, filter the returned items by category
         if (req.query.category) {
+            // Obtain the published "items" by category
             items = await store_service.getPublishedItemsByCategory(req.query.category);
         } else {
+            // Obtain the published "items"
             items = await store_service.getPublishedItems();
         }
 
-        items.sort((a, b) => new Date(b.postDate) - new Date(a.postDate));
-        viewData.posts = items;
+        // sort the published items by itemDate
+        items.sort((a, b) => new Date(b.itemDate) - new Date(a.itemDate));
 
-        viewData.post = await store_service.getItemById(req.params.id);
+        // store the "items" and "item" data in the viewData object (to be passed to the view)
+        viewData.items = items;
 
     } catch (err) {
         viewData.message = "no results";
     }
 
     try {
+        // Obtain the item by "id"
+        viewData.item = await store_service.getItemById(req.params.id);
+    } catch (err) {
+        viewData.message = "no results";
+    }
+
+    try {
+        // Obtain the full list of "categories"
         let categories = await store_service.getCategories();
+
+        // store the "categories" data in the viewData object (to be passed to the view)
         viewData.categories = categories;
     } catch (err) {
         viewData.categoriesMessage = "no results"
     }
 
-    res.render("shop", {
-        data: viewData
-    });
+    // render the "shop" view with all of the data (viewData)
+    res.render("shop", { data: viewData })
 });
 
 app.get('/about', (req, res) => {
@@ -144,18 +156,18 @@ app.get('/items', (req, res) => {
     if (req.query.category) {
         store_service.getItemsByCategory(req.query.category)
             .then(items => {
-                res.render('items', {items: items});
+                res.render('items', { items: items });
             })
             .catch(err => {
-                res.render('items', {message: "no results"});
+                res.render('items', { message: "no results" });
             });
     } else {
         store_service.getAllItems()
             .then(items => {
-                res.render('items', {items: items});
+                res.render('items', { items: items });
             })
             .catch(err => {
-                res.render('items', {message: "no results"});
+                res.render('items', { message: "no results" });
             });
     }
 });
