@@ -48,6 +48,8 @@ function addItem(itemData) {
         } else {
             itemData.published = itemData.published ? true : false;
             itemData.id = items.length + 1;
+            const date = new Date();
+            itemData.postDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
             items.push(itemData);
             resolve(itemData);
         }
@@ -110,6 +112,20 @@ function getCategories() {
     });
 }
 
+function getPublishedItemsByCategory(category) {
+    return new Promise((resolve, reject) => {
+        const filteredItems = items.filter(item =>
+            item.published === true && item.category === parseInt(category)
+        );
+
+        if (filteredItems.length > 0) {
+            resolve(filteredItems);
+        } else {
+            reject("no results returned");
+        }
+    });
+}
+
 module.exports = {
     initialize,
     getAllItems,
@@ -118,5 +134,6 @@ module.exports = {
     getItemsByCategory,
     getItemsByMinDate,
     getItemById,
-    addItem
+    addItem,
+    getPublishedItemsByCategory
 };
