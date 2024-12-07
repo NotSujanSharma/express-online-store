@@ -1,6 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-        <h2>Items</h2>
+        <h2>Items
+            <a href="/items/add" class="btn btn-success float-end">Add Item</a>
+        </h2>
         <hr />
 
         <% if(locals.items && items.length> 0) { %>
@@ -26,13 +28,11 @@
                                     <%= item.title %>
                                 </td>
                                 <td>
-                                    <%= item.postDate %>
+                                    <%= new Date(item.postDate).toISOString().split('T')[0] %>
                                 </td>
-                                <td>
-                                    <a href="/items?category=<%= item.category %>">
+                                <td><a href="/items?category=<%= item.category %>">
                                         <%= item.category %>
-                                    </a>
-                                </td>
+                                    </a></td>
                                 <td>$<%= item.price %>
                                 </td>
                                 <td>

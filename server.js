@@ -156,7 +156,11 @@ app.get('/items', (req, res) => {
     if (req.query.category) {
         store_service.getItemsByCategory(req.query.category)
             .then(items => {
-                res.render('items', { items: items });
+                if (items.length > 0) {
+                    res.render('items', { items: items });
+                } else {
+                    res.render('items', { message: "no results" });
+                }
             })
             .catch(err => {
                 res.render('items', { message: "no results" });
@@ -164,7 +168,11 @@ app.get('/items', (req, res) => {
     } else {
         store_service.getAllItems()
             .then(items => {
-                res.render('items', { items: items });
+                if (items.length > 0) {
+                    res.render('items', { items: items });
+                } else {
+                    res.render('items', { message: "no results" });
+                }
             })
             .catch(err => {
                 res.render('items', { message: "no results" });
@@ -243,12 +251,17 @@ app.get('/item/:id', (req, res) => {
 app.get('/categories', (req, res) => {
     store_service.getCategories()
         .then(categories => {
-            res.render('categories', { categories: categories });
+            if (categories.length > 0) {
+                res.render('categories', { categories: categories });
+            } else {
+                res.render('categories', { message: "no results" });
+            }
         })
         .catch(err => {
             res.render('categories', { message: "no results" });
         });
 });
+
 app.use((req, res) => {
     res.status(404).render('404');
 });
