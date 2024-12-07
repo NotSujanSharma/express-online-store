@@ -16,6 +16,7 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Published</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,9 @@
                                 </td>
                                 <td>
                                     <%= item.published %>
+                                </td>
+                                <td>
+                                    <a href="/items/delete/<%= item.id %>" class="btn btn-danger">Remove</a>
                                 </td>
                             </tr>
                             <% }); %>

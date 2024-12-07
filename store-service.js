@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('database', 'user', 'password', {
-    host: 'host',
+var sequelize = new Sequelize('postgres', 'postgres', 'vhGZpcA2ADYGeyjO', {
+    host: 'pertinently-pert-tamarin.data-1.use1.tembo.io',
     dialect: 'postgres',
     port: 5432,
     dialectOptions: {
@@ -205,6 +205,66 @@ function getCategories() {
     });
 }
 
+function addCategory(categoryData) {
+    return new Promise((resolve, reject) => {
+        // Replace empty strings with null
+        for (let prop in categoryData) {
+            if (categoryData[prop] === "") {
+                categoryData[prop] = null;
+            }
+        }
+
+        // Create the category
+        Category.create(categoryData)
+            .then(() => {
+                resolve();
+            })
+            .catch(() => {
+                reject("unable to create category");
+            });
+    });
+}
+
+function deleteCategoryById(id) {
+    return new Promise((resolve, reject) => {
+        Category.destroy({
+            where: {
+                id: id
+            }
+        })
+            .then(result => {
+                if (result === 1) {  // Sequelize returns number of deleted rows
+                    resolve();
+                } else {
+                    reject("Category not found");
+                }
+            })
+            .catch(() => {
+                reject("unable to delete category");
+            });
+    });
+}
+
+function deleteItemById(id) {
+    return new Promise((resolve, reject) => {
+        Item.destroy({
+            where: {
+                id: id
+            }
+        })
+            .then(result => {
+                if (result === 1) {  // Sequelize returns number of deleted rows
+                    resolve();
+                } else {
+                    reject("Item not found");
+                }
+            })
+            .catch(() => {
+                reject("unable to delete item");
+            });
+    });
+}
+
 module.exports = {
     initialize,
     getAllItems,
@@ -214,5 +274,8 @@ module.exports = {
     getItemsByMinDate,
     getItemById,
     addItem,
-    getPublishedItemsByCategory
+    getPublishedItemsByCategory,
+    addCategory,
+    deleteCategoryById,
+    deleteItemById
 };

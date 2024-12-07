@@ -1,11 +1,11 @@
 /*********************************************************************************
 
-WEB322 – Assignment 02
+WEB322 – Assignment 05
 I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part *  of this assignment has been copied manually or electronically from any other source (including 3rd party web sites) or distributed to other students.
 
 Name: Sujan Sharma 
 Student ID: 157775222 
-Date: 6th Oct 2024
+Date: 6th December 2024
 Web App URL: http://sujansarma.com.np
 GitHub Repository URL: https://github.com/NotSujanSharma/web322-app
 
@@ -37,6 +37,8 @@ app.use(function (req, res, next) {
     app.locals.viewingCategory = req.query.category;
     next();
 });
+
+app.use(express.urlencoded({ extended: true }));
 
 
 cloudinary.config({
@@ -248,6 +250,16 @@ app.get('/item/:id', (req, res) => {
     });
 });
 
+app.get('/items/delete/:id', (req, res) => {
+    store_service.deleteItemById(req.params.id)
+        .then(() => {
+            res.redirect('/items');
+        })
+        .catch(() => {
+            res.status(500).send("Unable to Remove Item / Item not found");
+        });
+});
+
 app.get('/categories', (req, res) => {
     store_service.getCategories()
         .then(categories => {
@@ -259,6 +271,30 @@ app.get('/categories', (req, res) => {
         })
         .catch(err => {
             res.render('categories', { message: "no results" });
+        });
+});
+
+app.get('/categories/add', (req, res) => {
+    res.render('addCategory');
+});
+
+app.post('/categories/add', (req, res) => {
+    store_service.addCategory(req.body)
+        .then(() => {
+            res.redirect('/categories');
+        })
+        .catch((err) => {
+            res.status(500).send("Unable to Add Category");
+        });
+});
+
+app.get('/categories/delete/:id', (req, res) => {
+    store_service.deleteCategoryById(req.params.id)
+        .then(() => {
+            res.redirect('/categories');
+        })
+        .catch(() => {
+            res.status(500).send("Unable to Remove Category / Category not found");
         });
 });
 

@@ -44,16 +44,18 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="category">Category:</label>
-                            <select class="form-control" name="category" id="category">
-                                <option value="">Select Category</option>
-                                <% if(locals.categories) { %>
+                            <% if(locals.categories && categories.length> 0) { %>
+                                <select class="form-control" name="category" id="category">
+                                    <option value="">Select Category</option>
                                     <% categories.forEach(category=> { %>
                                         <option value="<%= category.id %>">
                                             <%= category.category %>
                                         </option>
                                         <% }); %>
-                                            <% } %>
-                            </select>
+                                </select>
+                                <% } else { %>
+                                    <div>No Categories</div>
+                                    <% } %>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -69,7 +71,8 @@
                 </div>
             </fieldset>
             <hr />
-            <input type="submit" class="btn btn-primary pull-right" value="Add Item"> <br /><br /><br />
+            <input type="submit" class="btn btn-primary float-end" value="Add Item">
+            <br /><br /><br />
         </form>
     </div>
 </div>
