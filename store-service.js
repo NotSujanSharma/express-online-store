@@ -1,3 +1,16 @@
+/*********************************************************************************
+
+WEB322 – Assignment 06
+I declare that this assignment is my own work in accordance with Seneca  Academic Policy.  No part *  of this assignment has been copied manually or electronically from any other source (including 3rd party web sites) or distributed to other students.
+
+Name: Sujan Sharma 
+Student ID: 157775222 
+Date: 11th December 2024
+Web App URL: http://sujansarma.com.np
+GitHub Repository URL: https://github.com/NotSujanSharma/web322-app
+
+********************************************************************************/
+
 const Sequelize = require('sequelize');
 
 var sequelize = new Sequelize('postgres', 'postgres', 'vhGZpcA2ADYGeyjO', {
