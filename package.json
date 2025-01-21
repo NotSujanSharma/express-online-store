@@ -1,7 +1,7 @@
 {
-  "name": "web322-app",
+  "name": "express-online-store",
   "version": "1.0.0",
-  "description": "web assignment 2",
+  "description": "express store app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
